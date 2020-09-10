@@ -85,7 +85,7 @@ async function main() {
     constructor: '0x' + contractsCompiled['ValidatorSetSimplified'].bytecode
   };
 
-  spec.accounts['0x8000000000000000000000000000000000000000'] = {
+  spec.accounts['0x2000000000000000000000000000000000000000'] = {
     balance: '0',
     constructor: '0x' + contractsCompiled['KeyGenHistory'].bytecode
   };
@@ -95,14 +95,14 @@ async function main() {
   deploy = await contract.deploy({data: '0x' + contractsCompiled['InitializerSimplified'].bytecode, arguments: [
       [ // _contracts
         '0x1000000000000000000000000000000000000000',
-        '0x8000000000000000000000000000000000000000'
+        '0x2000000000000000000000000000000000000000'
       ],
       initialValidators, // _miningAddresses
       publicKeysSplit,
       init_data.parts,
       init_data.acks
     ]});
-  spec.accounts['0x7000000000000000000000000000000000000000'] = {
+  spec.accounts['0x3000000000000000000000000000000000000000'] = {
     balance: '0',
     constructor: await deploy.encodeABI()
   };
